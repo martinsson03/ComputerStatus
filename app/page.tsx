@@ -1,6 +1,6 @@
 import Card from "@/app/components/card";
-import { getDesktops } from "@/app/services/server/setup"
-import { shutdownDesktop, wakeDesktop } from "@/app/services/client/control";
+import { getDesktops } from "@/app/lib/server/setup"
+import { shutdownDesktop, wakeDesktop } from "@/app/lib/client/control";
 
 export default function App() {
   const cards = getDesktops()

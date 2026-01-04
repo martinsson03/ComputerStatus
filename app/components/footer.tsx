@@ -1,4 +1,4 @@
-export default function Footer() {
+export default function Footer(): React.ReactElement {
   return (
     <footer className="bg-gray-800 mt-12 align-bottom">
       <div className="mx-auto max-w-screen-lg px-6 py-6">

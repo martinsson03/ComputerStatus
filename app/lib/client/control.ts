@@ -1,5 +1,5 @@
 "use client";
-export async function shutdownDesktop(id) {
+export async function shutdownDesktop(id: number) {
     console.log(`Shuting down desktop with id ${id}.`);
 
     try {
@@ -7,11 +7,10 @@ export async function shutdownDesktop(id) {
         if (!response.ok) {
             throw new Error(`Server error: ${response.status}`);
         }
-
-        const result = await response.json();
-        console.log("Desktop stopped:", result);
+        
+        console.log("Desktop stopped.");
         alert("Desktop stopped!")
-        return result;
+
     } catch (err) {
         console.error("Failed to stop desktop:", err);
         alert("Failed to stop desktop.")
@@ -19,7 +18,7 @@ export async function shutdownDesktop(id) {
     }
 }
 
-export async function wakeDesktop(id){
+export async function wakeDesktop(id: number){
     console.log(`Starting desktop with id ${id}.`);
 
     try {
@@ -28,11 +27,8 @@ export async function wakeDesktop(id){
         if (!response.ok) {
             throw new Error(`Server error: ${response.status}`);
         }
-
-        const result = await response.json();
-        console.log("Desktop started:", result);
+        console.log("Desktop started.");
         alert("Desktop started!")
-        return result;
     } catch (err) {
         console.error("Failed to start desktop:", err);
         alert("Failed to start desktop.")

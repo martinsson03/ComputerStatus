@@ -1,4 +1,4 @@
-import { startDesktop } from "@/app/services/server/control";
+import { startDesktop } from "@/app/lib/server/control";
 
 // Endpoint for starting a desktop
 export async function GET(request: Request): Promise<Response> {

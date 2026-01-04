@@ -1,4 +1,4 @@
-export default function Header() {
+export default function Header(): React.ReactElement {
   return (
     <header className="bg-gray-800 shadow-md">
       <div className="mx-auto max-w-screen-lg px-8 py-6">

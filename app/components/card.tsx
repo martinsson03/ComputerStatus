@@ -1,6 +1,13 @@
-// Component for each card
 "use client";
-export default function Card({ id, name, onClickWake, onClickShutdown }) {
+
+type CardProps = {
+  id: string;
+  name: string;
+  onClickWake: (id: string) => void;
+  onClickShutdown: (id: string) => void;
+};
+
+export default function Card({ id, name, onClickWake, onClickShutdown }: CardProps): React.ReactElement {
   return (
     <div className="border p-4 rounded-lg shadow-md m-4 bg-white">
       <h2 className="text-xl font-bold mb-2">{name}</h2>
