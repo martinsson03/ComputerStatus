@@ -6,7 +6,7 @@ export default function App() {
   const cards = getDesktops()
 
   return (
-<div className="flex flex-wrap">
+<div className="p-4 flex flex-col justify-contents sm:justify-start sm:flex-row sm:flex-wrap">
     {cards.map((card) => (
       <Card
         key={card.id}

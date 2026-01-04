@@ -4,7 +4,7 @@ export default function Card({ id, name, onClickWake, onClickShutdown }) {
   return (
     <div className="border p-4 rounded-lg shadow-md m-4 bg-white">
       <h2 className="text-xl font-bold mb-2">{name}</h2>
-      <div className="flex gap-2 whitespace-nowrap">
+      <div className="pt-4 flex gap-2 whitespace-nowrap">
         <button
           className="flex-1 border-solid border-black border-2 bg-green-400 text-white px-4 py-2 rounded hover:bg-green-600"
           onClick={() => onClickWake(id)}>
