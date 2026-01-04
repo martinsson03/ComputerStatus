@@ -1,16 +1,20 @@
 import { startDesktop } from "@/app/lib/server/control";
 
-// Endpoint for starting a desktop
+// Endpoint for stopping a desktop
 export async function GET(request: Request): Promise<Response> {
   const url = new URL(request.url);
-  const id = url.searchParams.get("id");
-
-  if (!id) {
+  const id_str: string | null = url.searchParams.get("id");
+  if (!id_str){
     return new Response("Invalid request, missing id!", { status: 400 });
   }
 
+  const id_num: number = parseInt(id_str, 10)
+  if (isNaN(id_num)) {
+    return new Response("Invalid request, unable to parse id!", { status: 400 });
+  }
+
   try {
-    await startDesktop(id);
+    await startDesktop(id_num);
 
     return new Response(
       JSON.stringify({ success: true }),
@@ -20,7 +24,7 @@ export async function GET(request: Request): Promise<Response> {
     console.error(err);
 
     return new Response(
-      JSON.stringify({ error: "Failed to start desktop" }),
+      JSON.stringify({ error: "Failed to start desktop." }),
       { status: 500 }
     );
   }

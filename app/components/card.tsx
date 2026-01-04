@@ -3,8 +3,8 @@
 type CardProps = {
   id: string;
   name: string;
-  onClickWake: (id: string) => void;
-  onClickShutdown: (id: string) => void;
+  onClickWake: (id: string) => Promise<void>;
+  onClickShutdown: (id: string) => Promise<void>;
 };
 
 export default function Card({ id, name, onClickWake, onClickShutdown }: CardProps): React.ReactElement {
