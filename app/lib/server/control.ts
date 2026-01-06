@@ -21,10 +21,28 @@ export function stopDesktop(id: number): Promise<void> {
     if (!ip) return reject(new Error('IP not found for desktop ' + id));
 
     const conn = new Client();
-    const sshConfig = {
+    
+    type Config = {
+      host: string,
+      username: string,
+      privateKey: string
+    }
+
+    const username = getUsername(id);
+    const privateKey = process.env.COMPUTERSTATUS_SSH_KEY;
+
+    if (!username) {
+      throw new Error(`Username not found for desktop ${id}`);
+    }
+
+    if (!privateKey) {
+      throw new Error('SSH private key is not set');
+    }
+
+    const sshConfig: Config = {
       host: ip,
-      username: getUsername(id),
-      privateKey: process.env.COMPUTERSTATUS_SSH_KEY
+      username,
+      privateKey,
     };
 
     const shutdownCommand = isLinux(id) ? 'sudo shutdown -h now' : 'shutdown /s /t 0';
@@ -42,11 +60,11 @@ export function stopDesktop(id: number): Promise<void> {
               conn.end();
               resolve();
             })
-            .on('data', (data) => console.log('STDOUT:', data.toString()))
-            .stderr.on('data', (data) => console.error('STDERR:', data.toString()));
+            .on('data', (data: Buffer) => console.log('STDOUT:', data.toString()))
+            .stderr.on('data', (data: Buffer) => console.error('STDERR:', data.toString()));
         });
       })
-      .on('error', (err) => reject(err))
+      .on('error', (err: Error) => reject(err))
       .connect(sshConfig);
   });
 }

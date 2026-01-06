@@ -1,10 +1,10 @@
 "use client";
 
 type CardProps = {
-  id: string;
+  id: number;
   name: string;
-  onClickWake: (id: string) => Promise<void>;
-  onClickShutdown: (id: string) => Promise<void>;
+  onClickWake: (id: number) => Promise<void>;
+  onClickShutdown: (id: number) => Promise<void>;
 };
 
 export default function Card({ id, name, onClickWake, onClickShutdown }: CardProps): React.ReactElement {
