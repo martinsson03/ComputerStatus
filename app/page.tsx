@@ -2,6 +2,8 @@ import Card from "@/app/components/card";
 import { getDesktops } from "@/app/lib/server/setup"
 import { shutdownDesktop, wakeDesktop } from "@/app/lib/client/control";
 
+export const dynamic = 'force-dynamic';
+
 export default function App() {
   const cards = getDesktops()
 
