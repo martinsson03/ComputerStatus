@@ -1,0 +1,4 @@
+[
+  { "id": 1, "name": "Work-machine", "mac": "xxx", "ip": "xxx.xxx.xxx.xxx", "linux": false, "username": "John" },
+  { "id": 2, "name": "Gaming-PC", "mac": "xxx", "ip": "xxx.xxx.xxx.xxx", "linux": true, "username": "Alice" }
+]
