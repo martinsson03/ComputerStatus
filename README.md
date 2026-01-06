@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Remote Start & Shutdown Project (NEXT.js)
+
+This is a small **NEXT.js** project for remotely starting and shutting down Linux and Windows machines.  
+It uses **Wake-on-LAN (WoL)** and **SSH** for control.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the repository** and edit the `config.json` file to match your computers. Fill in your personal information.
+
+2. **Generate an SSH key pair** on the machine that will run this service. Configure the other computers to allow SSH connections as needed.
+
+3. **Create a `.env` file** in the root directory. You can use the provided `.envBase` as a template, which includes descriptions of all environment variables you need to set.
+
+4. **Start the Node.js server**:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Notice that this won't use the specified port in the .env file.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Docker
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+It is recommended to use docker for running the proect. Before using, follow all previous steps, but instead of running it via npm, run
 
-## Learn More
+```bash
+docker compose build
+docker compose run -d
+```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This will start Docker and run the service using the credentials in `.env`.
