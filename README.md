@@ -4,9 +4,12 @@ This is a small **NEXT.js** project for remotely starting and shutting down Linu
 It uses **Wake-on-LAN (WoL)** and **SSH** for control.
 
 ## Pictures
-Here are pictures of the UI. It is responsive and scale according to device size.
-![Desktop view](images/desktop.png)
-![Phone view](images/phone.jpg)
+
+Here are pictures of the UI. It is responsive and scale according to device size. The following pictures show the UI viewed from a phone and a desktop.
+
+<img src="images/desktop.png" alt="Desktop view" width="60%"/>
+<img src="images/phone.jpg" alt="Phone view" width="40%"/>
+
 ---
 
 ## Getting Started
