@@ -6,3 +6,5 @@ services:
       - "${COMPUTERSTATUS_PORT:-3000}:3000"
     env_file:
       - .env
+    volumes:
+      - ./config.json:/app/config.json:ro

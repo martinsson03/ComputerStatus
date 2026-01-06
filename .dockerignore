@@ -1,0 +1,10 @@
+.env
+.env.*
+config.json
+
+node_modules
+.next
+npm-debug.log
+
+.git
+.gitignore
