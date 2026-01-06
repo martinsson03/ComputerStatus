@@ -3,6 +3,10 @@
 This is a small **NEXT.js** project for remotely starting and shutting down Linux and Windows machines.  
 It uses **Wake-on-LAN (WoL)** and **SSH** for control.
 
+## Pictures
+Here are pictures of the UI. It is responsive and scale according to device size.
+![Desktop view](images/desktop.png)
+![Phone view](images/phone.jpg)
 ---
 
 ## Getting Started
