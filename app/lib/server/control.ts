@@ -29,11 +29,12 @@ export function stopDesktop(id: number): Promise<void> {
     }
 
     const username = getUsername(id);
-    const privateKey = process.env.COMPUTERSTATUS_SSH_KEY;
-
+    
     if (!username) {
       throw new Error(`Username not found for desktop ${id}`);
     }
+    
+    const privateKey = process.env.SSH_PRIVATE_KEY?.replace(/\\n/g, '\n');
 
     if (!privateKey) {
       throw new Error('SSH private key is not set');
@@ -41,8 +42,8 @@ export function stopDesktop(id: number): Promise<void> {
 
     const sshConfig: Config = {
       host: ip,
-      username,
-      privateKey,
+      username: username,
+      privateKey: privateKey,
     };
 
     const shutdownCommand = isLinux(id) ? 'sudo shutdown -h now' : 'shutdown /s /t 0';

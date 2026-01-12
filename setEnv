@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# save as generate-ssh-env.sh
+
+# Path to your SSH private key
+KEY_PATH="$HOME/.ssh/id_ed25519"
+
+# Check if key exists
+if [ ! -f "$KEY_PATH" ]; then
+  echo "SSH key not found at $KEY_PATH"
+  exit 1
+fi
+
+# Read the key and replace real newlines with \n
+KEY_CONTENT=$(awk '{printf "%s\\n", $0}' "$KEY_PATH")
+
+# Path to .env file
+ENV_FILE=".env"
+
+# Remove existing SSH_PRIVATE_KEY line if present
+if [ -f "$ENV_FILE" ]; then
+  grep -v '^SSH_PRIVATE_KEY=' "$ENV_FILE" > "$ENV_FILE.tmp" && mv "$ENV_FILE.tmp" "$ENV_FILE"
+fi
+
+# Append the new variable
+echo "SSH_PRIVATE_KEY=\"$KEY_CONTENT\"" >> "$ENV_FILE"
+
+echo ".env updated with SSH_PRIVATE_KEY!"
