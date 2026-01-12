@@ -16,12 +16,12 @@ KEY_CONTENT=$(awk '{printf "%s\\n", $0}' "$KEY_PATH")
 # Path to .env file
 ENV_FILE=".env"
 
-# Remove existing SSH_PRIVATE_KEY line if present
+# Remove existing COMPUTERSTATU line if present
 if [ -f "$ENV_FILE" ]; then
-  grep -v '^SSH_PRIVATE_KEY=' "$ENV_FILE" > "$ENV_FILE.tmp" && mv "$ENV_FILE.tmp" "$ENV_FILE"
+  grep -v '^COMPUTERSTATUS_SSH_KEY=' "$ENV_FILE" > "$ENV_FILE.tmp" && mv "$ENV_FILE.tmp" "$ENV_FILE"
 fi
 
 # Append the new variable
-echo "SSH_PRIVATE_KEY=\"$KEY_CONTENT\"" >> "$ENV_FILE"
+echo "COMPUTERSTATUS_SSH_KEY=\"$KEY_CONTENT\"" >> "$ENV_FILE"
 
-echo ".env updated with SSH_PRIVATE_KEY!"
+echo ".env updated with COMPUTERSTATUS_SSH_KEY!"

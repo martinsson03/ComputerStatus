@@ -34,7 +34,7 @@ export function stopDesktop(id: number): Promise<void> {
       throw new Error(`Username not found for desktop ${id}`);
     }
     
-    const privateKey = process.env.SSH_PRIVATE_KEY?.replace(/\\n/g, '\n');
+    const privateKey = process.env.COMPUTERSTATUS_SSH_KEY?.replace(/\\n/g, '\n');
 
     if (!privateKey) {
       throw new Error('SSH private key is not set');
