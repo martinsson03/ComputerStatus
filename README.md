@@ -50,6 +50,7 @@ All config is happening inside config.json. Each entry is it's own machine. Here
 | id | A unique number for each machine. |
 | name | The name which will be associated with the computer in the UI. |
 | mac | The MAC-address of the target computer. |
-| ip | The IP-address of the target computer. |
+| sshIp | The IP-address of the target computer. |
+| wolIp | The broadcast IP of the subnet where the computer is connected. |
 | linux | If the machine is running Linux. If set to false, the project assumes that Windows is used. |
 | username | The username which will be used by SSH to access the system. |
