@@ -5,7 +5,7 @@ import { Client } from "ssh2";
 export async function startDesktop(id: number){
     const wol = require('wake_on_lan');
 
-    wol.wake(getMac(id), { address: '255.255.255.255' }, (error: Error | null) => {
+    wol.wake(getMac(id), { address: getWolIp(id) }, (error: Error | null) => {
         if (error) {
             console.error('Failed to send WoL packet:', error);
         }
@@ -17,7 +17,7 @@ export async function startDesktop(id: number){
 
 export function stopDesktop(id: number): Promise<void> {
   return new Promise((resolve, reject) => {
-    const ip = getIp(id);
+    const ip = getSshIp(id);
     if (!ip) return reject(new Error('IP not found for desktop ' + id));
 
     const conn = new Client();

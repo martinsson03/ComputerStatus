@@ -11,8 +11,12 @@ export function getDesktops(): Desktop[]{
 
 
 // Getters for information
-export function getIp(id: number): string | null {
-  return getDesktops().find(d => d.id === id)?.ip ?? null;
+export function getSshIp(id: number): string | null {
+  return getDesktops().find(d => d.id === id)?.sshIp ?? null;
+}
+
+export function getWolIp(id: number): string | null {
+  return getDesktops().find(d => d.id === id)?.wolIp ?? null;
 }
 
 export function getMac(id: number): string | null {
