@@ -1,4 +1,4 @@
-import {getIp, getMac, isLinux, getUsername} from "@/app/lib/server/setup"
+import {getSshIp, getWolIp,getMac, isLinux, getUsername} from "@/app/lib/server/setup"
 import { Client } from "ssh2";
 
 
